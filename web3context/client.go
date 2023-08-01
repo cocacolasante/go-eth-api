@@ -73,7 +73,7 @@ func GetBalance(addr string) *big.Int{
 
 }
 
-func GenerateWallet() (string, string) {
+func GenerateWallet() (string) {
 	pvk, err := crypto.GenerateKey()
 	if err != nil {
 		log.Fatal(err)
@@ -89,7 +89,8 @@ func GenerateWallet() (string, string) {
 
 	fmt.Println(crypto.PubkeyToAddress(pvk.PublicKey).Hex())
 
-	return hexutil.Encode(pData), hexutil.Encode(pubData)
+
+	return crypto.PubkeyToAddress(pvk.PublicKey).Hex()
 
 }
 
@@ -129,3 +130,5 @@ func ReadKeystoreFile(password string){
 
 	
 }
+
+

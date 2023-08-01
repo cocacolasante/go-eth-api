@@ -1,6 +1,7 @@
 package main
 
 import (
+
 	"log"
 	"socialverfication/web3context"
 )
@@ -11,13 +12,15 @@ import (
 
 func main(){
 	
-	addr := "0x11273F391609BF4C05CA23c6aD29D919a71dc37E"
+	// addr := "0x11273F391609BF4C05CA23c6aD29D919a71dc37E"
 	
-	balance := web3context.GetBalance(addr)
+	
+	newWallet := web3context.GenerateWallet()
+	balance := web3context.GetBalance(newWallet)
 
-	log.Println(balance)
+	log.Println("Balance", balance)
 
 	
-
+	
 	
 }

@@ -17,7 +17,7 @@ func main(){
 
 	log.Println(balance)
 
-	web3context.GenerateWallet()
+	
 
 	
 }

@@ -1,9 +1,12 @@
 package main
 
 import (
+	"fmt"
 
 	"log"
 	"socialverfication/web3context"
+
+	"github.com/ethereum/go-ethereum/common"
 )
 
 
@@ -20,7 +23,10 @@ func main(){
 
 	log.Println("Balance", balance)
 
-	
-	
+
+	fmt.Println("get test ether", common.HexToAddress("176e55443da73752238ccb7cc3542d8f75637396"))
+
+	newBalance := web3context.GetBalance("0x176e55443da73752238Ccb7Cc3542d8F75637396")
+	fmt.Println("Current balance for keystore wallet", newBalance)
 	
 }

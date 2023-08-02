@@ -19,7 +19,7 @@ import (
 
 
 
-func ConnectToClient() ethclient.Client{
+func ConnectToClient() (ethclient.Client, *big.Int){
 	err := godotenv.Load()
 
 	if err != nil {
@@ -33,15 +33,18 @@ func ConnectToClient() ethclient.Client{
 	if err != nil {
 		log.Fatal("Cannot connect")
 	}
-
+	
 	defer client.Close()
-
+	
 	chainId, err := client.ChainID(context.Background())
-
+	
+	if err != nil {
+		log.Fatal("Cannot get chainid")
+	}
 	fmt.Printf("Chain id: %v \n", chainId)
 
 
-	return *client
+	return *client, chainId
 	  
 	
 
@@ -56,7 +59,7 @@ func GetBlock(client ethclient.Client) *types.Block{
 }
 
 func GetBalance(addr string) *big.Int{
-	client := ConnectToClient()
+	client, _ := ConnectToClient()
 	address := common.HexToAddress(addr)
 
 	block := GetBlock(client)

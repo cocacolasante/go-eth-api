@@ -1,5 +1,5 @@
 package main
-
+// this file is used to deploy the contract
 import (
 	"context"
 	"fmt"

@@ -1,4 +1,5 @@
 package main
+// generate the wallet and check the wallet balance and address
 
 import (
 	"fmt"
